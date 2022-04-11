@@ -4,6 +4,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
+                    sh 'which docker'
                     docker.image('node:12.22.8').inside {             
                         sh 'npm install'
                         sh 'npm test'                     

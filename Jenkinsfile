@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     sh 'pwd'
-                    sh 'which docker'
+                    //sh 'which docker'
                     docker.image('node:12.22.8').inside {             
                         sh 'npm install'
                         sh 'npm test'                     

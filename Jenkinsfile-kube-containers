@@ -1,14 +1,14 @@
 pipeline {
   agent {
     node {
-      label 'base'
+      label 'nodejs'
     }
 
   }
   stages {
     stage('build and tag image') {
       steps {
-        container('base') {
+        container('nodejs') {
           sh 'which docker'
         }
       }

@@ -1,18 +1,17 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build and Test') {
-            steps {
-                script {
-                        sh 'npm install'
-                        sh 'npm test'
-                }
-            }
-        }
+  agent {
+    node {
+      label 'base'
     }
-    post {
-        always {
-            cleanWs()
+
+  }
+  stages {
+    stage('build and tag image') {
+      steps {
+        container('base') {
+          sh 'which docker'
         }
+      }
     }
+  }
 }

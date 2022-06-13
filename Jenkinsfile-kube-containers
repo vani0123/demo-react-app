@@ -1,4 +1,4 @@
-node(nodejs) {
+node(POD_LABEL) {
     stages {
         stage('Build and Test') {
             container('nodejs') {

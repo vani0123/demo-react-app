@@ -1,4 +1,5 @@
-node(POD_LABEL) {
+pipeline {
+    agent any
     stages {
         stage('Build and Test') {
             container('nodejs') {

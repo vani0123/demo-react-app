@@ -1,5 +1,9 @@
 pipeline {
-    agent { nodejs }
+    agent { 
+        kubernetes {
+            defaultContainer 'nodejs'
+        } 
+    }
     stages {
         stage('Build and Test') {
             steps {

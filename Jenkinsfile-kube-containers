@@ -2,8 +2,8 @@ pipeline {
     agent any
     stages {
         stage('Build and Test') {
-            container('nodejs') {
-                stage('Build') {
+            steps {
+                script {
                         sh 'npm install'
                         sh 'npm test'
                 }

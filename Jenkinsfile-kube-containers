@@ -1,0 +1,17 @@
+node(POD_LABEL) {
+    stages {
+        stage('Build and Test') {
+            container('nodejs') {
+                stage('Build') {
+                        sh 'npm install'
+                        sh 'npm test'
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

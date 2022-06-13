@@ -6,10 +6,12 @@ pipeline {
 
   }
   stages {
-    stage('build and tag image') {
+    stage('build and test') {
       steps {
         container('nodejs') {
           sh 'which docker'
+          sh 'npm install'
+          sh 'npm test' 
         }
       }
     }

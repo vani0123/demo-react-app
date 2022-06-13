@@ -1,19 +1,15 @@
 pipeline {
-    agent { 
-        kubernetes {
-            defaultContainer 'nodejs'
-        } 
-    }
+    agent any
     stages {
         stage('Build and Test') {
             steps {
                 script {
                     sh 'pwd'
-                    //sh 'which docker'
-                   // docker.image('node:12.22.8').inside {             
+                    sh 'which docker'
+                    docker.image('node:12.22.8').inside {             
                         sh 'npm install'
                         sh 'npm test'                     
-                  //  }
+                    }
                 }
             }
         }

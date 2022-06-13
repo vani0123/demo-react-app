@@ -1,15 +1,15 @@
 pipeline {
-    agent any
+    agent nodejs
     stages {
         stage('Build and Test') {
             steps {
                 script {
                     sh 'pwd'
                     //sh 'which docker'
-                    docker.image('node:12.22.8').inside {             
+                   // docker.image('node:12.22.8').inside {             
                         sh 'npm install'
                         sh 'npm test'                     
-                    }
+                  //  }
                 }
             }
         }

@@ -8,7 +8,6 @@ pipeline {
     stage('build and test') {
       steps {
         container('nodejs') {
-          sh 'which docker'
           sh 'npm install'
           sh 'npm test' 
         }
@@ -26,8 +25,8 @@ pipeline {
                             -Dsonar.projectVersion=1.0 """
                         }
                        }
-                     /*   def qualitygate = waitForQualityGate()
-                        if (qualitygate.status != "OK") {
+                        def qualitygate = waitForQualityGate()
+                       /* if (qualitygate.status != "OK") {
                             error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
                         }*/
                 }

@@ -12,8 +12,8 @@ COPY package.json .
 #Copy remaining files
 COPY . .
 
-npm config rm proxy
-npm config rm https-proxy
+RUN npm config rm proxy
+RUN npm config rm https-proxy
 
 #Install dependencies
 RUN npm install

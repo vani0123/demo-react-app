@@ -33,7 +33,6 @@ pipeline {
                 }
             }                                    
         }
-  }
   stage('build and tag docker image') {
       steps {
         container('nodejs') {
@@ -55,3 +54,4 @@ docker tag vani0123/docker-nodejs-demo vani0123/docker-nodejs-demo:1.0.0-SNAPSHO
       }
     }
   }
+}

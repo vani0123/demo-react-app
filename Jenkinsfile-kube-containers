@@ -3,7 +3,6 @@ pipeline {
     node {
       label 'nodejs'
     }
-
   }
   stages {
     stage('build and test') {
@@ -15,5 +14,24 @@ pipeline {
         }
       }
     }
+    stage('Sonar Analysis') {
+            steps {
+                script {
+                      container('nodejs') {
+                        withSonarQubeEnv("SonarQube") {
+                            sh """${tool("sonar")}/bin/sonar-scanner \
+                            -Dsonar.projectKey=react-app \
+                            -Dsonar.sources=. \
+                            -Dsonar.projectName=react-app \
+                            -Dsonar.projectVersion=1.0 """
+                        }
+                       }
+                        def qualitygate = waitForQualityGate()
+                        if (qualitygate.status != "OK") {
+                            error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                        }
+                }
+            }                                    
+        }
   }
 }

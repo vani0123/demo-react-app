@@ -23,7 +23,9 @@ pipeline {
                             -Dsonar.projectKey=react-app \
                             -Dsonar.sources=. \
                             -Dsonar.projectName=react-app \
-                            -Dsonar.projectVersion=1.0 """
+                            -Dsonar.projectVersion=1.0 """ \
+                            -Dsonar.login=admin \
+                            -Dsonar.password=3361a3c8e53987548ee7726f3e78c1e4f0c80512
                         }
                        }
                         def qualitygate = waitForQualityGate()

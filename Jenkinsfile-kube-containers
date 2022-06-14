@@ -34,4 +34,25 @@ pipeline {
             }                                    
         }
   }
+  stage('build and tag docker image') {
+      steps {
+        container('nodejs') {
+          sh '''docker build -t vani0123/docker-nodejs-demo .
+docker tag vani0123/docker-nodejs-demo vani0123/docker-nodejs-demo:1.0.0-SNAPSHOT'''
+        }
+      }
+    }
+  stage('docker push') {
+      steps {
+        script{
+          container('nodejs') {
+               docker.withRegistry('https://ghcr.io', 'vani0123') {
+               def dockerImage = docker.image("vani0123/docker-nodejs-demo:1.0.0-SNAPSHOT")
+                           dockerImage.push()
+               }
+          }
+        }
+      }
+    }
+  }
 }

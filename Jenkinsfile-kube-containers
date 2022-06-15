@@ -9,6 +9,7 @@ pipeline {
       steps {
         container('nodejs') {
           sh 'npm install'
+          sh 'npm run build'
           sh 'npm test' 
         }
       }
@@ -32,7 +33,7 @@ pipeline {
                 }
             }                                    
         }
-  stage('build and tag docker image') {
+ /* stage('build and tag docker image') {
       steps {
         container('nodejs') {
           sh '''docker build -t vani0123/docker-nodejs-demo .
@@ -51,7 +52,7 @@ docker tag vani0123/docker-nodejs-demo vani0123/docker-nodejs-demo:1.0.0-SNAPSHO
           }
         }
       }
-    }
+    }*/
   }
   /*post {
        always {

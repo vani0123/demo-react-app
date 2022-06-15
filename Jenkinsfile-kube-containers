@@ -45,7 +45,7 @@ docker tag vani0123/docker-nodejs-demo vani0123/docker-nodejs-demo:1.0.0-SNAPSHO
       steps {
         script{
           container('nodejs') {
-               docker.withRegistry('https://ghcr.io', 'vani0123') {
+               docker.withRegistry('https://ghcr.io', 'github-token') {
                def dockerImage = docker.image("vani0123/docker-nodejs-demo:1.0.0-SNAPSHOT")
                            dockerImage.push()
                }

@@ -26,10 +26,11 @@ pipeline {
                             -Dsonar.projectVersion=1.0 \
                             -Dsonar.host.url=http://172.19.27.40:32645 \
                             -Dsonar.login=3361a3c8e53987548ee7726f3e78c1e4f0c80512 """
+                            def qualitygate = waitForQualityGate()
                         }
                       }
-                        def qualitygate = waitForQualityGate()
-                       /* if (qualitygate.status != "OK") {
+                       /* def qualitygate = waitForQualityGate()
+                        if (qualitygate.status != "OK") {
                             error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
                         }*/
                 }
